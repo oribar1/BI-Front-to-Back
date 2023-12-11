@@ -1,0 +1,802 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/6/2023 9:20:44 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-4PCHVTP"
+  DTS:CreatorName="DESKTOP-4PCHVTP\oriba"
+  DTS:DTSID="{CDD37943-6BDC-4AD3-81FD-26CEACCE79DF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5223.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{78B7FE78-4263-4ED2-BCDD-01CF9D7EA8E9}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-4PCHVTP\ORI.FINAL]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1BBE7A46-84A0-4ED6-9B26-A5206353B398}"
+      DTS:ObjectName="DESKTOP-4PCHVTP\ORI.FINAL">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-4PCHVTP\ORI;Initial Catalog=FINAL;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-MRR_TABLES-{1BBE7A46-84A0-4ED6-9B26-A5206353B398}DESKTOP-4PCHVTP\ORI.FINAL;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-4PCHVTP\ORI.PriorityERP]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E166B9BB-005B-4BE9-9ABD-BE8E307FCC56}"
+      DTS:ObjectName="DESKTOP-4PCHVTP\ORI.PriorityERP">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-4PCHVTP\ORI;Initial Catalog=PriorityERP;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-MRR_TABLES-{E166B9BB-005B-4BE9-9ABD-BE8E307FCC56}DESKTOP-4PCHVTP\ORI.PriorityERP;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{B98A9AD8-01F3-40AE-B8AF-1014E795C6C3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\MRR_PART"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="MRR_PART"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[MRR_PART]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\MRR_PART.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-4PCHVTP\ORI.FINAL]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-4PCHVTP\ORI.FINAL]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\MRR_PART.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\MRR_PART.Inputs[OLE DB Destination Input].Columns[PARTNAME]"
+                      cachedCodepage="1255"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PARTNAME"
+                      externalMetadataColumnId="Package\Data Flow Task\MRR_PART.Inputs[OLE DB Destination Input].ExternalColumns[PARTNAME]"
+                      lineageId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].Columns[PARTNAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\MRR_PART.Inputs[OLE DB Destination Input].Columns[PART]"
+                      cachedDataType="i4"
+                      cachedName="PART"
+                      externalMetadataColumnId="Package\Data Flow Task\MRR_PART.Inputs[OLE DB Destination Input].ExternalColumns[PART]"
+                      lineageId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].Columns[PART]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\MRR_PART.Inputs[OLE DB Destination Input].Columns[PARTDES]"
+                      cachedDataType="wstr"
+                      cachedLength="48"
+                      cachedName="PARTDES"
+                      externalMetadataColumnId="Package\Data Flow Task\MRR_PART.Inputs[OLE DB Destination Input].ExternalColumns[PARTDES]"
+                      lineageId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].Columns[PARTDES]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\MRR_PART.Inputs[OLE DB Destination Input].Columns[PRICE]"
+                      cachedDataType="r8"
+                      cachedName="PRICE"
+                      externalMetadataColumnId="Package\Data Flow Task\MRR_PART.Inputs[OLE DB Destination Input].ExternalColumns[PRICE]"
+                      lineageId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].Columns[PRICE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\MRR_PART.Inputs[OLE DB Destination Input].Columns[FAMILY]"
+                      cachedDataType="i8"
+                      cachedName="FAMILY"
+                      externalMetadataColumnId="Package\Data Flow Task\MRR_PART.Inputs[OLE DB Destination Input].ExternalColumns[FAMILY]"
+                      lineageId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].Columns[FAMILY]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\MRR_PART.Inputs[OLE DB Destination Input].ExternalColumns[PARTNAME]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      name="PARTNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\MRR_PART.Inputs[OLE DB Destination Input].ExternalColumns[PART]"
+                      dataType="i4"
+                      name="PART" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\MRR_PART.Inputs[OLE DB Destination Input].ExternalColumns[PARTDES]"
+                      dataType="wstr"
+                      length="48"
+                      name="PARTDES" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\MRR_PART.Inputs[OLE DB Destination Input].ExternalColumns[PRICE]"
+                      dataType="r8"
+                      name="PRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\MRR_PART.Inputs[OLE DB Destination Input].ExternalColumns[FAMILY]"
+                      dataType="i8"
+                      name="FAMILY" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\MRR_PART.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\MRR_PART.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_PART.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\MRR_PART.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_PART.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\MRR_PART.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\PART"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="PART"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[PART]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\PART.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-4PCHVTP\ORI.PriorityERP]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-4PCHVTP\ORI.PriorityERP]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].Columns[PARTNAME]"
+                      codePage="1255"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PARTNAME]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].Columns[PARTNAME]"
+                      name="PARTNAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].Columns[PART]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PART]"
+                      lineageId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].Columns[PART]"
+                      name="PART"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].Columns[PARTDES]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PARTDES]"
+                      length="48"
+                      lineageId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].Columns[PARTDES]"
+                      name="PARTDES"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].Columns[PRICE]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PRICE]"
+                      lineageId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].Columns[PRICE]"
+                      name="PRICE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].Columns[FAMILY]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[FAMILY]"
+                      lineageId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].Columns[FAMILY]"
+                      name="FAMILY"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PARTNAME]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      name="PARTNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PART]"
+                      dataType="i4"
+                      name="PART" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[TYPE]"
+                      dataType="wstr"
+                      length="1"
+                      name="TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[T$PROC]"
+                      dataType="i8"
+                      name="T$PROC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PARTDES]"
+                      dataType="wstr"
+                      length="48"
+                      name="PARTDES" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[UNIT]"
+                      dataType="i8"
+                      name="UNIT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[UPD]"
+                      dataType="wstr"
+                      length="1"
+                      name="UPD" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[LEADTIME]"
+                      dataType="i8"
+                      name="LEADTIME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[STATUS]"
+                      dataType="wstr"
+                      length="1"
+                      name="STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[FATQUANT]"
+                      dataType="r8"
+                      name="FATQUANT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PRICE]"
+                      dataType="r8"
+                      name="PRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[LASTPRICE]"
+                      dataType="r8"
+                      name="LASTPRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[COST]"
+                      dataType="r8"
+                      name="COST" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[REV]"
+                      dataType="i8"
+                      name="REV" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PRIVTYPE]"
+                      dataType="wstr"
+                      length="1"
+                      name="PRIVTYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PATTERN]"
+                      dataType="i8"
+                      name="PATTERN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[SERNPATTERN]"
+                      dataType="i8"
+                      name="SERNPATTERN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PUNIT]"
+                      dataType="i8"
+                      name="PUNIT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[CONV]"
+                      dataType="r8"
+                      name="CONV" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[AVGDATE]"
+                      dataType="i8"
+                      name="AVGDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[KITFLAG]"
+                      dataType="wstr"
+                      length="1"
+                      name="KITFLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[DOLLAR]"
+                      dataType="r8"
+                      name="DOLLAR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[TAKEFLAG]"
+                      dataType="wstr"
+                      length="1"
+                      name="TAKEFLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[WTYPE]"
+                      dataType="wstr"
+                      length="1"
+                      name="WTYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PREFERRED]"
+                      dataType="wstr"
+                      length="1"
+                      name="PREFERRED" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[EXCESS]"
+                      dataType="wstr"
+                      length="1"
+                      name="EXCESS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PARTPARAM]"
+                      dataType="i8"
+                      name="PARTPARAM" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PDES]"
+                      dataType="i8"
+                      name="PDES" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[COSTDATE]"
+                      dataType="i8"
+                      name="COSTDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[MPART]"
+                      dataType="i8"
+                      name="MPART" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[AUTOSERIAL]"
+                      dataType="wstr"
+                      length="1"
+                      name="AUTOSERIAL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[SIZEBAR]"
+                      dataType="i8"
+                      name="SIZEBAR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[CURRENCY]"
+                      dataType="i8"
+                      name="CURRENCY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[SCRAP]"
+                      dataType="r8"
+                      name="SCRAP" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[SECONDCOST]"
+                      dataType="r8"
+                      name="SECONDCOST" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[SECONDPRICE]"
+                      dataType="r8"
+                      name="SECONDPRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[COSTQUANT]"
+                      dataType="r8"
+                      name="COSTQUANT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[ACTUALCOSTTYPE]"
+                      dataType="wstr"
+                      length="1"
+                      name="ACTUALCOSTTYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[SERNFLAG]"
+                      dataType="wstr"
+                      length="1"
+                      name="SERNFLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[FAMILY]"
+                      dataType="i8"
+                      name="FAMILY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[CURDATE]"
+                      dataType="i8"
+                      name="CURDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[LASTCURRENCY]"
+                      dataType="i8"
+                      name="LASTCURRENCY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[LASTCOSTFLAG]"
+                      dataType="wstr"
+                      length="1"
+                      name="LASTCOSTFLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[REVFLAG]"
+                      dataType="wstr"
+                      length="1"
+                      name="REVFLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PRICEFLAG]"
+                      dataType="wstr"
+                      length="1"
+                      name="PRICEFLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[FOBPRICE]"
+                      dataType="r8"
+                      name="FOBPRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[FOBCURRENCY]"
+                      dataType="i8"
+                      name="FOBCURRENCY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PURPRICE]"
+                      dataType="r8"
+                      name="PURPRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[T$USER]"
+                      dataType="i8"
+                      name="T$USER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[UDATE]"
+                      dataType="i8"
+                      name="UDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[BARCODE]"
+                      dataType="wstr"
+                      length="16"
+                      name="BARCODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[MAXREPAIRPRICE]"
+                      dataType="r8"
+                      name="MAXREPAIRPRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[REPAIRCURRENCY]"
+                      dataType="i8"
+                      name="REPAIRCURRENCY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[UNSPSC]"
+                      dataType="i8"
+                      name="UNSPSC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[MOLDPART]"
+                      dataType="i8"
+                      name="MOLDPART" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[RBALANCE]"
+                      dataType="r8"
+                      name="RBALANCE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PARTTYPE]"
+                      dataType="i8"
+                      name="PARTTYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PARTSTAT]"
+                      dataType="i8"
+                      name="PARTSTAT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[OWNER]"
+                      dataType="i8"
+                      name="OWNER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[EXTFILEFLAG]"
+                      dataType="wstr"
+                      length="1"
+                      name="EXTFILEFLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[LOCFLAG]"
+                      dataType="wstr"
+                      length="1"
+                      name="LOCFLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PRICEPOLICY]"
+                      dataType="wstr"
+                      length="2"
+                      name="PRICEPOLICY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[TURNKEY]"
+                      dataType="wstr"
+                      length="1"
+                      name="TURNKEY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[SHOWINWEB]"
+                      dataType="wstr"
+                      length="1"
+                      name="SHOWINWEB" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PALLETTYPE]"
+                      dataType="i8"
+                      name="PALLETTYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[SUPERPHARM]"
+                      dataType="i8"
+                      name="SUPERPHARM" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[NOTFIXEDCONV]"
+                      dataType="wstr"
+                      length="1"
+                      name="NOTFIXEDCONV" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[LOTBYVENDOR]"
+                      dataType="wstr"
+                      length="1"
+                      name="LOTBYVENDOR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[MINPRICE]"
+                      dataType="r8"
+                      name="MINPRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[STORAGETYPE]"
+                      dataType="i8"
+                      name="STORAGETYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PIKORDER]"
+                      dataType="i8"
+                      name="PIKORDER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[CREATEDDATE]"
+                      dataType="i8"
+                      name="CREATEDDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[ILOTBYVENDOR]"
+                      dataType="wstr"
+                      length="1"
+                      name="ILOTBYVENDOR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[PICKBYPACKS]"
+                      dataType="wstr"
+                      length="1"
+                      name="PICKBYPACKS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[COMPANY]"
+                      dataType="i8"
+                      name="COMPANY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[WMSSERVFLAG]"
+                      dataType="wstr"
+                      length="1"
+                      name="WMSSERVFLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[DCMONTHS]"
+                      dataType="i8"
+                      name="DCMONTHS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[COLORPART]"
+                      dataType="i8"
+                      name="COLORPART" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[CALCSTDCOST]"
+                      dataType="wstr"
+                      length="1"
+                      name="CALCSTDCOST" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output].ExternalColumns[MINEXPDAYS]"
+                      dataType="i8"
+                      name="MINEXPDAYS" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Error Output].Columns[PARTNAME]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\PART.Outputs[OLE DB Source Error Output].Columns[PARTNAME]"
+                      name="PARTNAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Error Output].Columns[PART]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\PART.Outputs[OLE DB Source Error Output].Columns[PART]"
+                      name="PART" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Error Output].Columns[PARTDES]"
+                      dataType="wstr"
+                      length="48"
+                      lineageId="Package\Data Flow Task\PART.Outputs[OLE DB Source Error Output].Columns[PARTDES]"
+                      name="PARTDES" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Error Output].Columns[PRICE]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\PART.Outputs[OLE DB Source Error Output].Columns[PRICE]"
+                      name="PRICE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Error Output].Columns[FAMILY]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\PART.Outputs[OLE DB Source Error Output].Columns[FAMILY]"
+                      name="FAMILY" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\PART.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PART.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\PART.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\MRR_PART.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\PART.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="103.2,41.6"
+          Id="Package\Data Flow Task\PART"
+          TopLeft="509.714279195484,153.999998599291" />
+        <NodeLayout
+          Size="131.2,41.6"
+          Id="Package\Data Flow Task\MRR_PART"
+          TopLeft="498.99999345839,255.705880863083" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="562.957136326937,195.599998599291">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.105882263792"
+              Start="0,0"
+              End="0,52.605882263792">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.605882263792" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
